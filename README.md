@@ -38,11 +38,14 @@ El proyecto utiliza una estructura modular:
 1. Se inicializa el repositorio y se configuran las variables de entorno.
 2. Se ejecuta `./scripts/deploy.sh` para aprovisionar los contenedores y la red en el motor de Docker local.
 3. Se ejecuta `./scripts/verify.sh` para validar que el servidor Nginx responda en el puerto 80 y que los contenedores APP y DB estén activos en el segmento 10.10.0.0/24.
-
 ## Pregunta de análisis: Reproducibilidad
 **¿Qué ventajas presenta reconstruir la infraestructura a partir del código en comparación con realizar nuevamente la configuración manual?**
-Reconstruir mediante código garantiza una idempotencia absoluta; es decir, el resultado final será exactamente el mismo sin importar cuántas veces se destruya y se vuelva a crear el entorno. A diferencia de la configuración manual, que es propensa al olvido de pasos, cambios de versiones o errores de tecleo, IaC actúa como una fuente única de verdad, permitiendo levantar entornos de desarrollo o producción completos en segundos y facilitando auditorías de seguridad al tener cada componente explícitamente documentado en archivos `.tf`.
+Reconstruir la infraestructura mediante código favorece la idempotencia y permite obtener una configuración consistente y reproducible a partir del estado declarado. A diferencia de la configuración manual, que es propensa al olvido de pasos, cambios de versiones o errores de tecleo, IaC actúa como una fuente única de verdad, permitiendo levantar entornos de desarrollo o producción completos en segundos y facilitando auditorías de seguridad al tener cada componente explícitamente documentado en archivos `.tf`.
 
+## Resultados
+La ejecución de la práctica culminó con la implementación exitosa de una infraestructura de red virtual mediante Terraform. 
+Se desplegó una red privada (10.10.0.0/24) y tres servidores: WEB (10.10.0.10), APP (10.10.0.20) y DB (10.10.0.30). 
+Las pruebas realizadas mediante `terraform validate`, `docker ps`, `docker network ls` y `curl` confirmaron el correcto funcionamiento de los recursos y del servicio HTTP. Finalmente, se destruyó y reconstruyó la infraestructura, demostrando su reproducibilidad mediante código.
 ## Conclusiones
 La implementación de Infraestructura como Código (IaC) con Terraform resolvió exitosamente los problemas de consistencia del caso de estudio. Se logró estandarizar el despliegue, mitigar configuraciones erróneas y establecer un flujo de trabajo replicable mediante scripts de Bash, demostrando los beneficios tangibles de las prácticas DevOps.
 
