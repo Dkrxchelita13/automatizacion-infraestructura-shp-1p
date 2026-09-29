@@ -1,0 +1,36 @@
+version: '3.8'
+
+networks:
+  empresa-network:
+    name: empresa-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24
+          gateway: 10.10.0.1
+
+services:
+  web:
+    image: nginx:alpine
+    container_name: srv-web
+    networks:
+      empresa-network:
+        ipv4_address: 10.10.0.10
+    ports:
+      - "80:80"
+
+  app:
+    image: alpine:latest
+    container_name: srv-app
+    command: tail -f /dev/null
+    networks:
+      empresa-network:
+        ipv4_address: 10.10.0.20
+
+  db:
+    image: alpine:latest
+    container_name: srv-db
+    command: tail -f /dev/null
+    networks:
+      empresa-network:
+        ipv4_address: 10.10.0.30
