@@ -50,7 +50,7 @@ Las pruebas realizadas mediante `terraform validate`, `docker ps`, `docker netwo
 La implementación de Infraestructura como Código (IaC) con Terraform resolvió exitosamente los problemas de consistencia del caso de estudio. Se logró estandarizar el despliegue, mitigar configuraciones erróneas y establecer un flujo de trabajo replicable mediante scripts de Bash, demostrando los beneficios tangibles de las prácticas DevOps.
 
 ## Evidencias
-*(Insertar aquí las capturas de pantalla guardadas en la carpeta evidencias/)*
+Se encuentran en el pdf proporcionado:
 * Captura de Terraform Init, Validate y Plan.
 * Captura de Terraform Apply.
 * Captura de los contenedores y red funcionando (Verify).
